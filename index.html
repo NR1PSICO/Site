@@ -246,13 +246,359 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
 .combo-note{font-size:11px;color:var(--tm);font-style:italic;margin-top:20px;text-align:center}
 
 /* RESPONSIVE */
-@media(max-width:768px){
-  .hg,.about-g,.price-g,.sec-g,.del-g,.test-g,.how-g,.contact-g,.plat-g,.footer-g,.cont-cards,.cont-mockups,.cont-steps,.combo-g{grid-template-columns:1fr}
-  .hero h1{font-size:28px}.hbtns{flex-direction:column}.bp,.bs{width:100%;text-align:center;justify-content:center}
-  .how-step::after,.how-line{display:none}.nav-links{display:none}.s{padding:50px 0}
-  .price-card.ft{transform:none}.nums-g{gap:24px}.nums-g b{font-size:28px}.fcert{display:none}
-  .cf-row{flex-direction:column}
+
+
+/* ─── LAYOUT REFINEMENTS ─────────────────────────────────────────── */
+
+/* Contentor principal mais generoso */
+.c{max-width:1120px;padding:0 32px}
+
+/* Seções com espaçamento vertical uniforme */
+.s{padding:88px 0}
+
+/* Cabeçalhos de seção centralizados com limite de largura */
+.section-header{text-align:center;max-width:640px;margin:0 auto 48px}
+
+/* Label de categoria (SL) com melhor espacamento */
+.sl{font-size:10px;letter-spacing:4px;margin-bottom:12px;display:block}
+
+/* Títulos com melhor line-height */
+.stl,.std{line-height:1.18;margin-bottom:18px}
+
+/* ─── BOTÕES — sistema unificado ─────────────────────────────────── */
+
+/* Botão primário */
+.bp{
+  background:var(--gn);
+  color:#fff;
+  padding:15px 32px;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.3px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:none;
+  cursor:pointer;
+  transition:background .22s ease, transform .18s ease, box-shadow .22s ease;
+  line-height:1;
+  white-space:nowrap;
 }
+.bp:hover{
+  background:var(--gn2);
+  transform:translateY(-3px);
+  box-shadow:0 10px 32px rgba(14,150,140,.35);
+}
+.bp:active{transform:translateY(-1px)}
+
+/* Botão secundário */
+.bs{
+  background:transparent;
+  color:var(--tl);
+  border:1.5px solid rgba(255,255,255,.18);
+  padding:15px 32px;
+  border-radius:12px;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.3px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  transition:border-color .22s ease, color .22s ease, background .22s ease;
+  line-height:1;
+  white-space:nowrap;
+}
+.bs:hover{border-color:var(--gn2);color:var(--gn2);background:rgba(14,150,140,.06)}
+
+/* Botões dos planos (pbtn) */
+.pbtn{
+  width:100%;
+  padding:15px 20px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.4px;
+  cursor:pointer;
+  transition:all .22s ease;
+  border:none;
+  text-decoration:none;
+  display:block;
+  text-align:center;
+  line-height:1;
+}
+.pbtn.p1{
+  background:var(--gn);
+  color:#fff;
+  box-shadow:0 4px 16px rgba(14,150,140,.25);
+}
+.pbtn.p1:hover{
+  background:var(--gn2);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(14,150,140,.35);
+}
+.pbtn.p2{
+  background:transparent;
+  color:var(--gn2);
+  border:1.5px solid var(--gn);
+}
+.pbtn.p2:hover{
+  background:rgba(14,150,140,.08);
+  transform:translateY(-2px);
+  border-color:var(--gn2);
+}
+
+/* Botão CTA nav */
+.ncta{
+  background:var(--gn);
+  color:#fff;
+  padding:10px 22px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.3px;
+  text-decoration:none;
+  transition:all .22s ease;
+}
+.ncta:hover{background:var(--gn2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(14,150,140,.3)}
+
+/* ─── CARDS DE PREÇOS — alinhamento ──────────────────────────────── */
+
+/* Remove scale no featured — usa borda e sombra */
+.price-card{
+  display:flex;
+  flex-direction:column;
+  padding:36px 28px 28px;
+  border-radius:18px;
+}
+.price-card.ft{
+  transform:none;
+  border-color:var(--gn);
+  box-shadow:0 0 0 1px var(--gn), 0 16px 48px rgba(14,150,140,.18);
+}
+
+/* Empurra botão pro fundo do card */
+.price-card .pbtn{margin-top:auto}
+.price-list{flex:1;margin-bottom:20px}
+
+/* Valor do preço maior */
+.price-val{font-size:40px;line-height:1;margin:12px 0 4px}
+.price-val span{font-size:15px}
+
+/* ─── HERO — ajustes ──────────────────────────────────────────────── */
+
+/* Botões hero em linha com melhor gap */
+.hbtns{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:28px;
+  align-items:center;
+}
+
+/* ─── BLOCO DE DOR — badge centralizado ─────────────────────────── */
+.indicado-badge{
+  display:inline-block;
+  background:transparent;
+  color:var(--gn2);
+  border:1.5px solid var(--gn2);
+  padding:9px 22px;
+  border-radius:100px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.5px;
+  text-align:center;
+  margin:0 auto 24px;
+}
+
+/* ─── SEÇÕES COM FUNDO ESCURO — título branco ─────────────────────── */
+.pricing .sl,.faq .sl{color:var(--gn2)}
+
+/* ─── SEÇÕES GERAIS — max-width no intro ─────────────────────────── */
+.pricing .c > div:first-child,
+.faq .c > div:first-child{
+  max-width:600px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* ─── GRID DE PLANOS — altura igual nos cards ─────────────────────── */
+.price-g{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:40px;
+  align-items:stretch;
+}
+
+/* ─── RESPONSIVO MELHORADO ───────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════
+   HAMBURGER NAV
+══════════════════════════════════════════════════════ */
+.mob-btn{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  z-index:200;
+}
+.mob-btn span{
+  display:block;
+  width:24px;height:2px;
+  background:var(--tl);
+  border-radius:2px;
+  transition:all .3s ease;
+  transform-origin:center;
+}
+.mob-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.mob-btn.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.mob-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE — até 768px
+══════════════════════════════════════════════════════ */
+@media(max-width:768px){
+
+  /* Container */
+  .c{padding:0 18px}
+  .s{padding:56px 0}
+
+  /* Topbar */
+  .top{font-size:11px;padding:8px 16px}
+
+  /* Nav */
+  .mob-btn{display:flex}
+  .nav-links{
+    display:none;
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    background:rgba(13,27,42,.98);
+    backdrop-filter:blur(16px);
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    z-index:150;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:16px;color:var(--tl)}
+  .nav-links a:hover{color:var(--gn2)}
+  .ncta{padding:14px 28px;font-size:15px}
+
+  /* Tipografia */
+  .hero h1{font-size:26px;line-height:1.2}
+  .stl,.std{font-size:24px !important}
+  .sl{font-size:10px}
+
+  /* Hero */
+  .hg{grid-template-columns:1fr;gap:32px}
+  .hcard{display:none}
+  .hero{padding:52px 0 44px}
+  .hbtns{flex-direction:column;align-items:stretch;gap:12px;margin-top:20px}
+  .bp,.bs{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    padding:16px 20px;
+    font-size:14px;
+    white-space:normal;
+  }
+  .hbadge{font-size:11px}
+
+  /* Trust */
+  .trust-items{gap:16px;justify-content:flex-start}
+  .trust-item{font-size:11px}
+
+  /* Números */
+  .nums-g{gap:20px}
+  .nums-g b{font-size:28px}
+  .nums-g p{font-size:11px}
+
+  /* How it works */
+  .how-g{grid-template-columns:1fr 1fr;gap:20px}
+  .how-line{display:none}
+  .how-step::after{display:none}
+
+  /* Platform preview */
+  .plat-g{grid-template-columns:1fr}
+
+  /* Quiz */
+  .qopts button{padding:12px 14px;font-size:13px}
+
+  /* Grids gerais */
+  .price-g{grid-template-columns:1fr;gap:16px}
+  .price-card{padding:28px 22px 22px}
+  .price-card.ft{transform:none;box-shadow:0 0 0 2px var(--gn)}
+  .del-g{grid-template-columns:1fr;gap:16px}
+  .test-g{grid-template-columns:1fr;gap:16px}
+  .about-g{grid-template-columns:1fr}
+  .sec-g{grid-template-columns:1fr}
+  .footer-g{grid-template-columns:1fr;gap:28px}
+  .contact-g{grid-template-columns:1fr}
+  .cont-cards,.cont-mockups,.cont-steps,.combo-g{grid-template-columns:1fr}
+  .how-g{gap:16px}
+
+  /* Botões dos planos */
+  .pbtn{padding:16px;font-size:14px}
+
+  /* Bloco de valor */
+  [style*="repeat(auto-fit,minmax(200px"]{
+    grid-template-columns:1fr !important;
+  }
+
+  /* Transição */
+  .trans-block{padding:36px 0}
+  .trans-block p{font-size:14px}
+  .trans-block h3{font-size:20px}
+
+  /* Badge indicado */
+  .indicado-badge{font-size:11px;padding:8px 16px;white-space:normal;text-align:center}
+
+  /* Formulário */
+  .cf-row{flex-direction:column}
+  .contact-form{padding:24px 18px}
+
+  /* FAQ */
+  .faq-list{margin-top:24px}
+  .faq-q{font-size:13px}
+
+  /* Frase de fechamento */
+  .bloco-fechamento p{font-size:18px !important}
+
+  /* Certificado flutuante */
+  .fcert{display:none}
+
+  /* Footer */
+  .footer{padding:36px 0}
+  .footer-bottom{font-size:10px}
+
+  /* Seções com padding inline */
+  section[style*="padding:60px"]{padding:44px 0 !important}
+  section[style*="padding:50px"]{padding:40px 0 !important}
+  section[style*="padding:70px"]{padding:48px 0 !important}
+}
+
+/* ══════════════════════════════════════════════════════
+   TABLET — 769px até 1024px
+══════════════════════════════════════════════════════ */
+@media(min-width:769px) and (max-width:1024px){
+  .c{padding:0 28px}
+  .price-g{gap:16px}
+  .price-card{padding:28px 18px 22px}
+  .hg{gap:36px}
+  .test-g{grid-template-columns:1fr 1fr}
+  .del-g{grid-template-columns:1fr 1fr}
+  .footer-g{grid-template-columns:1fr 1fr;gap:28px}
+  .stl,.std{font-size:28px !important}
+}
+
 </style>
 </head>
 <body>
@@ -263,7 +609,8 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
 <!-- NAV -->
 <nav class="nav"><div class="c">
   <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAAAmCAYAAACI/XQWAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAy3UlEQVR4nN29eZidVZUu/q6193eGOjUlqarMIwmQAQIkzEMIRAEBbZUqcNb+2aS7bdt26Hvb22qltLtva3t/Kl76Cmo7XVupg6IogxCGCpMMkTkECQFC5rmGM357r3X/+L7vnFOVyoBX7afvep6TkzrDHtf4rrX3IQAM9ALoQ0wUP2v8LPjDEMUPbegL0XjGo24a//WE8hjTzth2j069vYwNGw7fz6JF47fX1zdeX4ze3uh/R2rzcO1HbWKcdv9jqBeMPki6rW1euvvKf+Epk1dRKpPTkcJO2bT5R0M/vfUzIKpANdnT/yfpWDaS8fsVGkZ3NyGf97/HNscnIuCCCywGuhTIC/6zbSQRIMJYsybag76+P5TyOjL19jLWrNHWJUvm0VtX3UcLj5+JqouYhxkGBPfo+jsP3vCdK6HqQfSfa53fAFF20sxpprmtlYhUKxUSkixAykrlkcGtB1Es7sTvTWi6DVATlExLx7yZSKX2D2/fuC8ZT9vk4+fYTCpdDUPVSFtBxVllSuNIDB+SGjXFCoVSHS6EqOzaD2CoYapA91UG+cMKjm05+fR5rS3NWa+VAEEAqFK0+SE8AmfTKKNSBZACAKTSaVQrFezYsGEr9uwZQd1iIrt06fSm9vaWNLOG1WpGiawaoUAtqVUiR5q0TcwKR1plLlaqVVQP7JTqxlcGARwEUKmNUJWxZg3+6IKjyiCSltUfvAMXnXcpDxWrxvsUCCBAJZ0JrfpU5Zbb/mro1juuR+8Ki74B90cd4x+JLCYvelhbO2erOCUhYhWAFAqSTPuCIbfz2SvcgS0PjWH234F6GejzSE1clJly4ifNhM6VSLfNwv7N3wHwZyAGVJpd26yHfVvnFPVOQMRQhRCBmEEKEHGN3RXaYCIFIqKBQqw4r94d9JXKFoSFx1He/4vqzhfuRT5fiXm6rgC6uw3yeZ+74IKVqQvPvrPS3MwgBTEDTIDGZlg9qqJQABT3GgLO2MBOmD3tugPf/9HH0NtrsGaNB5GmT1/ar0sWnlOqVDwbNkQEBsHHA47arEuuqkJFYMWDnZes8wXjq/vDQuUF2rP3Qf/c878oED0DAOjvNuj5I1joiBhEkp0xYzpNmXKxGymo9T4AM4gomkq5ZHw2Kzpj6lUArsea+wV9x+aF/mcjS7apTVMtUB9Gs1dSACSkZJomtRvD/+4ObFkGunkv9He1NL0M9Elq2tK/5YmzPs8tXRkhBlIZ6IFUtuGD7G3aUnYiEJYYRCBQFIwQlEaFPdGLda5TACAiMgAMiLoI6DKE5eRKf2E6F/zW799xfXXb49cD8Eis5u7d0c422Uk6pZPDTMazKEddNXI0Ij+jgeEFiqCpCUHHxPaxM9a2ZhtOngQtFImIQETaGBwmzddtnUbDB8ESsRq0CHMLG57Nzl/Ki47/fPN5Z93hHvz1P5Z78o/E1g/4Q7uZvb1AXx8yMyZPRCYTeFUkLpeqNsxH2TTlWhsm8/8kMbwnOK/kvZB6hQoBApCSl9DpxJmzMgsuugmqBitWMI4t7qlTd7cB+iSYtfy/25mnfYlbp6ZV1am6KqpFVVceZbpVSakesCtElFQAFYJ4gjiCeFLvCBJGr2n8EK/qnap3St4pqxNVcWoyQhNnHh/MXvq17PyL7wWy0xEJfg1gMMpCIsqiYO+JnSOqOqIwfjgHdk45jB4UOiUnIBGAzKHuh0LIeTVexYQCDj1R/DBOiENP5DyRc8TeEzkh9l7JO4ULlSqhUqkqNFz0Wg4ddXRwsHz55dmedzzU8p63rwGRQnsTDfKHoxh8qO56fbdWK6UgSAmpRhYxfhCRcsqKqVb2AwDy+cMAN//5iQWiIJASEYgJTAARWAksaiUMHU2ac1Ew9dQvYmDAYdky+wbaN8jnvW2fc4HtOO7vxKadqgeILASsCoLEykg8AQgVUhWAQKRETMpEANW1sSKSZ4zlFYrsCzORYQIzMRkmJQtV1kpRBBLSlHkXZE849wEgOw0gwZ490eamDMjaSFqpZq/GPqjWB3Ok4RVA3XjURxNJPgFC0bJGLlky6rgpEDNqlit5MTIdRKrMIENQS16AYslj6mRNXbyyt+1P3/3voD6gv/+NK7E3Ror+flN4Zfcuv337rZRKsRiuQtVD1auok1QKenCYZdPmbwIA8vk/4HD+Y4mJIxcr8kfjddfEXVCQOgsiZ7qO+yRPWHAN1q8PgRXHJjS9vQoAdtKcT1G2XUkciImICMwWSozY4wLWgAB4qDjSBkSV6mOKnz0QP1Q9FB4KT4geIAgoaloJAMexDoGhGsCHIXXMm5tecNZPAE2juzuav5AA5AH1ouI1Zoj4IUfiSJFDPRAlCFSgjW/FMqeqgKpANe6nPh8V9RAV+PibsQwpAWRgUCqTE1Tt+ee+q/Wad/4Leno8urv/sBq9p0fR28v+jvs+7h59/ClOBWlqazZobTbUmrNmcMiWH3zkywduX9uP3l7+oyCg/0FkVUDEBPhYSA4hAqlnNE+Q1IzF3yi74nqMrHvpGOIZitGcFs3kzoYKQcVAajoWZAzUBKN5UZWgCogAkUAl2hcKApM1cZgViXciUAljKSAQsIiHhFz7RC3jw4GqD03ncWfZ0vCHXV/f9QAgigxlrCFjDBmutUcU8aJUqkhckXicEUREChq9CgRACSRJG1CtRSgKAGyAdIqZ60oqCfrjvyDeg5z3EOFkCiIKMJNxPvCBcfbMZZ/I7dj5i8LNN9+fgBdH2I9obIlw7d5N6OqKJpPPN9rv8UjQ10dFYAe+esO5Lde8/cNm5vTzEdhmFMuv++ee/0lh7QO/Qm8v/w4IHqG3l7BhA9Xiyfq4fp+pgGjuSR8JdXXpG+nHEqO+VITEJ40YgxK2tEyiHhOnt2V85aflDdvOQm9vCX19R0pSRe+lOqaQybSrSr0TKKAegBn3iwn6FY2BYuZkcFjxfuiVh0VQJSJmNgqQIJIlIiUjqhMoyExDU1sXBSnAhaoRZ4JQY2CDIC2pCVP+xm3FtwBUMHTgJbf+6fu9sUyqDCVhhoghD6IJZv5xp0kQgH2D0MSjHaM3Eg/L1BQDCIpIIJQZVCioPP/c48q2EC+IeFFGBDYYSpsJ1NIyj6ZMzqi10DBUYqa6xwaiUoWkY6KaRSd+AQMPnY/+fq0pj0bqBQO9jC98wUFEDytURMBNNxnk84djVEV3t8FPf1Ic/vEt1wG4btS7991nsXLlsVqWiHm7u4Grr/YNSdpDiRn47Gct0Cfoe8OAE2HFCoP77xcQyREViiqjp4eOJjyWIgw51pYNVoYjoSEmqCgYMAgrDh2zl6SPO/9blb6+d2HFCouBI+PtgW1qIWNtjKyQkEYsFLt8h6wAJaBt/KcoFKpgQwiHhysv3nMZgMKR+gQwIT3t1LfThBlf5tbOCSqqFPmCke6HsvpQONM633YsONPtfWnd8IOPPooHH1057hzamk7Jfe7TT6K9XVWEwBwJcTKPcUihnMRDiD4JVVW1lmh4WA5+9cZ3Ath6mPFT2+TJc6oXnPGu4KTFn+FZs7JaqSgzUyR4CgBGK1UN5sw8N3fqkpMLRM+M0fCE/n5GT48H4teamqZkli+eS20Tu5Q5QyKhDh7Yoy++9npl165t6OkJkz3ATVcZ9IxhniMx3MqVx5Z36e42uPlmj3zex7FOU7DwuLk0fdZsbmlqhSpROSyH+/ftcI/95jWI7EBfX9R2f79BT8+xWINIIG/OewwMuFiRTLJnnLSAJ02dzrlcBt5DKpWS7Nq71a1f/xKIDtTmftVVh7XWVlXBhCj2jl2fGjOgnoeI+FusenE8cd41qeLBR6sDA189qtAEAYHrwhgBoYrEeNSjfgBAXX0nQgxAiUAMiBCQy+XwqU+VsGEDjVuq8vnPCxQHKtuf/Dc7vOuFYP5591NugoV4aJw4UAXIexEOCNnWcwCsw7JlAZ54YvQi3XijwbXXenvemZlGtwoNz9EwDxNCKADRaO5JLM8EIZjUovmt1edfirL4a9aM1huGZXDXrleQ/8U/te7a/njwJ39yOyZMZK1WSWPNRgSwqqfJXdaccOLb8eRzz6CeYGYQCXp6fGr27IXZi8652ndMvALNLQtsc3MrsplIc4uHlqtAoVRJFUdep30HHpYtr/9i5M5770BPvhDzQsR8+bxvveKyq+3C4/4aECVlS0RQQx7Gktu3d/PgLd9fjV0oNsy+kSiGwj2AILtq5WV27qxrqLPjfNPcMl1amgmpIHIYQod0oQS57M3DNDS8Uffsuq38wEM3VXt6NgLAUdxPbrAmk5reefnb0nNmv11b287SbKYDmSzUmojVRUHlEvC2S/bwvv2PVV/dctPwz2//GfL54ThZe4ibakFUiWZDo95q1PK1eJsIkNBIKnDcefyXTbH4lB8YuP8wSU0CAKsa25aoHdYGd08F5KWRWQREHjFgl3g+9bEoUCgkJSJHdge7uwOXzz9iR/b8gls73iniPamaCMjQCGswljjddBoAYN68yGw3Unc3YfVqwbKTx4nqtYam0fjyIsnYadRQFWAOqTBcrPU3vt/P+NpHg6GPff3u5hMW3ZQ695z3iKongiGO3TzvyadTwKT2UwAAixcrEqFRbWv54DVf4hMXfICnTk8TAxSGUK9K0Ghs1kLSGaL21jTztPkA5ttTlrx/0hnLX6lufPG64f6fXwdAMGECA/DS0nwuTl5yDsIQyhbKkRbUdApmx46zc/ce/6XCrt8mlk5HzYVIQKRNb175fnPy4r/l6dOWmNa2qA0viEAbhRIrsyFkMsydk1rEmNPZnXh6bsmJf5fb9NqPDvzwB59FPr9tXKFJXlO1mbdd9onMkoUf4zlzpmkuC3YeCEMVEYklNwres2mmzo5OzJ11uT1h/uWti45/VZ594Z9HiG6IFcaoWJ0BchJvJEnECEkME6M5cbCqkRlSIvaeqXWyCWYs6s8gMxt0c5IIPITCABFkJQCDYsuSBLoASA/VFEm+kBM4d1REeizBmWL3bgHAWhq6QytlkKhCfCSksa1QkwIFLV0ADl9YCQCOaihzMvDEsjBofOjDE9csc+RUIhF9AgkH9mgujOCnz3j09rLfvudnUiiArNXEUMXWjlQVmk3NBQB0dyuIJDt9+oy2T35kwKw451p0dqa1WnZULAuFTkk8wXtD3ht1zlAYMqqharkiqFa9ZJq8nnD83NRlq77S8derH2yeOrUDq1YlSGoR1dCr8xUtl7wUil5Hil6HRpwvlr1tzRwalPb2MkAC1Y62j17bn/qTy79nlixaglzWS6XsqVwRCqvKrmrgQsPOW4gzcI5QrSqVywJRhynTMnzBuR+a+MlPPtFy8XlXIJ/3UdsxxcKSntU1r/Wvrh3IXHLxF3X+3Gmi4jE07FEqKZwjVjWssCRiId7AOdJSSWWk6NVazyeeMCd95Zu/Mekj/18equ0gksZ+WFVNzGKjzAoRQGwggKhIzTWLHszkq95MmNFJ88/6EVQNurvHJkYS7qq9FnlbiSDGr40GXmt91/9IPgeME/Ecnga6omg8LL2CShEEZRrTFRHDEB8dIrexOUu+ngTfOJL0JnOsfalB6hVJndwRqatL0dcnOnhwB8olIK5caoSxiRmczU4AkIkbbrHXvO02Xn7KUoQ+5Eqo5MUiKgciAjyYnYKdEjkAnonAhpmIjXHe6OCgF2Yn2exSFWF0d0finrIlMmxAZIjZEJNBUlkh4yA4vb2Mz39eshMnTG/7Lx8boHPO7EYm56hSFaMwxGziWI/qrOOjguc478UgZhFLlYpKuewwf8EUe9HKXzRd+aYPoq9P0dvLibA0LV68tOl973vInLHsHFgTcrmqpBqNMUJMaiHBqJ0iIjAZUjVcKonYwNHZZ1w18ZMfubc5l+vE5z8vEXgCsCJyLWolHzEjeGb40jA0rLAySy2+SfZdxYirOupacHZ61hlfQj7vsWLFOLAXNcjEePLEjZqWoTBJHojiGKAuzG8k3bA7clNN0AEbIImgRuGnqhB1lSO1AgBwGGMhEoqt1XjDoiRJWbeSdEzGcZzuvVP1AhWJEZo6MQjGWCByrzXXfeV/4UULT5ZCIWSlADZKsKoIhBlIpw3bwHJgrWnKWtPSYrQpR96yV/FefAhlwA4OW/fUM58o7Nq1e/aaD6YAwFfLqVG6rG5yCeoRlnyjRiOsWQOoTrAfuOZOLF28SIdHQgqrliIEBsQ1fvLC5GGtqrUgy6IgB2lIZEWQjdViwdOcuZI+/vhvA5iANWsUP7nZZ447bmbqrZfcqQtPmIJSyTEoQIyOAoCKqALOM3u1VmGtKJGDwpNEdU+sBCJmCp11xWJIpy49Nfjwe+6Aag5rIgawBBKWMTGLiMCm2ZdGXpChbT9NzVr290TGK7yJUaakfsgqsTOT538iVR18pDowcHOU1BxwSOBVR/E36sFyIyxLbIuNXYOoFvWPUjyoKYaja2YAWLSHsQHOZtveTJlWqKtqksRU1UiMvQPKI1sAHNOZlfE+oAk4Ms47Y0kSJBIASscwhyhnQJn2tqmUbUKcQDUAau4yVIFqWAVQBJA1c+f+KTELlUOjTJEBIFVKp4h27Ybfsu1OPzTyNKBlbspO5NaWeZJtWsadE6ZocxMk1JBTGVP9zdNPD/3q3m9Ce/m11Ts8AKgxRREdpaGJCGCOgBnj6+51fzeDyDf/2Xu/b05evESHhkNmCpK8Vqx0VVMBTDpjZHgEft8+iHiYpibmthYGB9Bq1ZOXKDcGAE1ZNYVhU92y/W8BHMCaNQaisG9e0a8nLpiCkYJjJksNboqICIKADbOVwWFIsQRYJm5pYeSagLCqVHUARy4ugWA8AikWQ152yrIJH7jm6weI/hT9/cZGi1oP+BNmJlVwYDnc9pvPuFTraXbKgsug8GAYIoaKRFrUV42mW4QnL/q31Mjg89WRdS8g2lQFgBChBmP4oBFpErgMAGBDPnG+tJaoTIaVWBwI0NRkcfrpFiMjhObmw6jsC4GBvirQfKJmJ14j8ApSQ8QNNgZQV4EUhp4FAOR3H5sgjklCKuiw2aQxOAoIkRZDlA86url597sJAwNKHR2XSksWVAmVRvmrUFWBDg9vBSBNZ5xxPHd2TFMVJUK0+d5DgkB58KAP77r3vUP3PHDTOD21N1960SqeN/cveMFxF5mDg6j+5pm/jJC2DSaJ7zR0WRWp80hcHUJMYGagEEZvbNhg0ZevNl2y6sPmpEVXoFoJWRBEcakmSKxSNke0fy/c68/fLq9sy5e3bXsW3lWotX1mMGvKWXbylHfz3DnzYYwidJAUe6Ni3UOP/Otg/pYv44YbAqxeHbZddeUnsXTJWVIphQYIkjiZiOBVhbNZ1ldfLclrW/893LrtDr933zY1NhXMnDGPZ057h5k17Urf3g4qh0rGRBgVE1g0kKpzfMqSD7W+fu6Phnp67rYkgCZ7R/E/8YJIWM0B89PhK/e/h1Ppp0zXnFlwoSjAiaUgYiLvhFsnt2DGST/Gxp1no7u7EhfgSYBGm4F6MrJmzSU6XLKou2Z7o8/GciPxNwURkxWLezAwcJQE2QBsy/QzTdeJ30Fzew6uLACzKteKB2CsQWnIa2Hf2vg7RwyQtCYe0RCTBC8ACI/i/SjWJ/IKgGk0Rha3xZLlNLq7DTZvZsybN1pYFy0iTJtGWL06bJnWcTwfP+/dECiJGI37ZGLAsKqIhoOFDQBgJrXPpGxGBRBiNqQK9V4BZrd3b2nongduBTNmfOxj2a3OCSoVwapVgquvPjhy5703A7i55fJVbyVruoafeOrh6JRl3qO3N4rznE+PWhONyj1qcHsqfqN/kQOhyS5a8FnkmhWVitE4Q66KCIBpSpO88vIeeeCB9w2tfeRXY5b7uSpwB4Avtr3nnZ8xy075tO/ocOSqNnz4kV8Ofe/HH0Fvr8W11zqsXt1CCxf8LZqbxIwUTePYFBDOplmf3fB0eEv+XSMv7XyhsZPy40+uA/Dd7Kpz3hqcf94P7KzZrVSp1jZWAaBaJXR1abB4yWdw70N329oeNyBAqH1cCNiUAugA73mxR7PND6K5kxBWFBTVhMVkxDlnOuadnJ5z7g2VfP59WNSdwobo2LBQPZCvBcvJVymIkpA1C5NkyuPFrUX9AjapbGbOGR+3QXYQUJI4bcgARERVwgwoMxvp1OnItK6QbDugTgHiSCv6OPaFN9ayLw89FBa2jU34jUNhfZmS8pZE6AmHKRBKtNAYNAUARALa+noVm16PasjWrx+319y8GUvsVW+7CbNnNaFUETBzgl6KepAN2BaKVH51668AwIcl5dARxaCAEkGtIQjEzDsuN/EjH/5O9fpvfXTrV76yp9bJDTcw1q4NsH498MQTbpjo1ujLSofA7DzaKiZlP9HHGz5KfdJ22UVv5vlzZ3kRD2JTWw1R1bRVbH29UvjpLVe4p196DPfdZ7FmDXDhhVEjUY6N8IUvFAd/+JP/ltu15yl78fk36Z59zw5984dXQ5WxejWBSHNvvfStOn3qZC1XvGWuuasiIsikSV7c9Hr4pa9fWgR24oZrA6w9UB/o7t2ENWtQWrnyVi2EV9p3XHGXdnYGVK4kGBeIyGhYVZ4+5dymk05aZmshcKT+owy/KBQMMCsAh17hUh89yun2T6WC5q9SkHKkUkOXYvTLeq+OOue9NxWOrK9uyH91LKfEifZRdAgoWy81iDcdICWCeiDTkjHTl/4L4qE2GipOIis2UGKoOLB3AhhGnHeJ4hcPGCtSOGiqe175CgCg7xjiF62tVDLpyG8/EnLXgPDF3yGIgG0Ae+Y5l7TZYBNSzBCOGjGGQNpu2prn+EkTL5Suzkv8jOlpKhTVGOaaYhNAvQgRyL/22muldevuBhH8K9tftIWi59ZmVu8BY6IxEtipKJ++9GrzmU9c1Lx95+3YvvO2kTvvHQDRbiR7kM8bdHcb7N4tiBC0Q0gTLyRxa4GYX4C6iQHMgnnv0PZWpUJJiSMXnkGAIUEYmuoTT/6Te/qlx9Dbm8LKlVUAwMDAoSvY22sKfX39zdt3bje+shWgItYQY1W/4MYbwTOnv5UyTarlimqt/o8AYxTDQ1x54OG/LgE7ce21AVbfGB4yoZUrgd7eVLmvb52ZPf1L6VUXfRZMnjSOFYmgoROZ1G6CRfOvtPVZN2jP2mjjHe9jwbJlgaxf/zWkskto5skfhlcHFVszxwAAMUjnvJmy8CumVNjg92+6S9XYxKGJoNkkzzPediS9xpmSUc4MAyoQL04TVCou84/GkJj7MNlWrlVOxv0RFCCuqvOp6o6X+v2+3/4sti5vvLq2QbuOi90lyEgjQEgEOAdtb0fwziu/mWTsQQ1MZxjIZMDpFOAEVKkKiFhrwVx0VEDSxlPog8qLm78CoIR777WVlStfzuzb9yRmT1+mofMgmARG5dATVAXz5nUGx839gA6PfKDljGX79eDQI9i582f+F3fdXurp2Q7Ao7/fYGBgrCeJCIBNEL/YU6i52wwYn7hEVlvazoQokUbuO5hBqqqplPEvb95fvOVX18VrfygTN3SIvj6H7m4zks8/WFvJPgjoagAITHvrGWAmE29DzF/CmbTRTb99sTTwyK1x1v7w/fT1OfT2cqGv7yupxYs+ilkz26lU1gSohShRJgXu6ljBdduTaPMGJd9ogdev9+juNuXXHvmY3735WWVrVeGBepKTiImkStQ8QYOpJ/wAQAdl08UafFiTqzjTrolZqy8Q1wIFjNoYaAzlMSxBowfF/1expPVnKEz9sErSlArYeiKT0t2bH3ZbH/vQOBnpw1CAuv+FBiGIRXocvDiecjznOrJEiAJKyeVEWnLim3PiczmRlmbR5pxIOuNF1KFQ8qZS0Ug+6mscB93O5JoD2bDxycKtd3wjvqQCALT67PNfoANDhFyTkldh0SiTrnF4XqmoVp2jppy38+dPtGctvzy45OJvpj79NxuaV7/vB5nlp5yDnp7kIotRlpeNKdeOgTQcwUjGhTBimEx7+3QEwSxxPpkymAgw1pt0ACoUHwQwiMWLxxHKcSif99FBxFrIxFAFpkyZppnsVPW1oopkewQikH1D60Ak8SUiRyKJ1+8ADg6uj84oxdUQkTwQkYHJ5RbwWCRHa7udqDTUVyafB4iKlVeeeZffv20E1hKRamIGVRSqxFqpCLfP6MosuOg74a6XmdiMWpRIamM3RyRCyaKgnwClWoVBLE8U12DVNirxIhvK7WvPVAcXtIZIsSLIMoUV47e/cFNl88BlICoe5nqkcSiM220ER+K5KEGdzxwyPR8lhMdiYYk1ZueZQzfqYZxnI2JI1YLICCKkK7HipAolDTWbtv7ZZ/eUfrm2JyltwsCAQ3e3Ka1dd2v40COf5sEhS+kUq6gjEYnAKQYbS0xkScSgXFYaKXkR8pgxrc2cdcZ7M++44qHWP333v0G1tWbok7GnUyOJhWmYUbwZEtUNAvCzpk701mTgJQ51CUKAkILEIygVtwAgPP/8sSGTQFL4mdzDQACQOW72TMpm0/B+VEytRFDn4AqFl4/gyoymSKgI5cqL4h1qJ9Ij3iYVAYLUJEtAepSY1/4YtyMPvcAiHHje7938QW5qvRnZZkcutLWoXmNxFKfUNe+KtK9Ol8gS2cQHp0bGU2lEXlQUmth1HTPZyKVjVy9oViA5K6/eRL5XfQoUKQkRIZJ9W+7xe1/7qt+78Zex4B2bdgMQWZhxKGFmp6lx3qQ4EhzzlST4qk9BobEwjJLE2jMJBIaE0mljUkEgzz7/cuHW27vDl1/ehO5uU3MpY008clP+n5sGB/enlp/2DzR7ZielmqChE6hGCKd4jteeADUkCrgYS+icRHbmtA9NmDhxibvhe5cNf+ITB7BhAwOAeKEk96ONYxxL1jIM1xFC1drJUlWFr4a1PN3/DTFRMxmGxIJdB2NipcR8tKr2saQeKDE0jo9jAQQit5YoNe7x1iixx4dBfwYcVqywfs/zP9Hdm77EqhbEjuL0SYOhJlFSM3XxqRxkLXkPBkUwPOKDWZF5H50dBuLrLqhuWRo8IVJvyTtD4qNSBnhLbCxsihonSbXzNxBWEI3sfczv3fhLLOpOAW9EWBr6HuO314acsuNsTDyVxlcalIqqeiE4YTghOM8UPROcEDkY42CMRxBAM2nWwFq/a7e4gYe+7b543VnhC5ueHLcAMRaa4p333XjwH/7HSeEDj/y9vLx5E1WrrNmM1UyaxQYiCgdVUUkSxETEMMYL+4qr4oxTT6f3dH8ffX2C7kXJuGVcGaklzGIqFKpWoMx1dcFxNp2IQZlMyzEu+6EL2kDiUCJJFKTGHjsAKGAIbE372O8crQcD6rSmlkZs6Jgg4kcsCOEha3A0dhoY8FixwlYGBv4rgmCxmbLwcog6ENnGwN5ASEVql03UGK1uIsaLmOPCaa3HL1AFWZKRPSW/dePfEQe7EZCBKsMzkQ2mUdfsL3CujVlcXDQUCZ0HLAWB8NSFn06VRn5d3ZC/9Q1fGaWR7leta8vRI6Yj5nCij1DtWRVAOjC18pnG6mzVqOw+dODQQYeGIcNDG8Mdu+4Mf/3U98ING54CgKOCFdGxi10j37/pnwB8peWyiy/G7FlvNZMmXqwT2+dxexurMUAlFHJCsIYUBGUDEkpJMXRmyaK35C5esarQ07cWiA7BigiS3LJqPS/FxPAUsVK4dfMu8n4IzG1QVSKKSnq8kPcKl8kuAwCsWePR13csOxBxZPJvdMgL2PLiZldYWeFJE9LkfN3KeCFk07CtTWcA0LiK+8gUj0WbMqfFl1xwzQXXCICTcnmXhWoq4UvShsD8yApYMTAgUKUK0QcD0/S47Zwzh6QqRIYTBCk2ZTyqmjJRspQw0ajUNUOJNa4oVkh9QEwg9SW3/4XkmqRRZHy1NTVn6afBJjrKGVswA0DFg7KtaqfMv76678UB9C4aRt9R1UJ9yNa6JAQek2mPaPSZ/qhdQ772ycbvGAMaGUb42IY7QNgLIgsiIWOIAC+qXlw4IsPFrbZQ2KRbtrxYeGbjRgCjD1EdLm+UnDkhiip4o1ONpeE77vklgF8CyKQvOOPs1Ow5l/CUrsvNrBlLNJeDhjEMHc+AwxDc2qJm7uz3A1gLABydzWhwxwhxGTrIMODiwvcC9mqp+KpasxQJlqQKVTGohEIdE08KTjpxWQj85qjnqepWtB2KEIQCFAwmLW8/sC1dKb+MwCyiCtUyiKTKWvUaTui4ELncZHR378GRLqNcscKC2WVOP/Vsnjp5sbpQKKpJSPZPSD3r4NBvbA1t1Zo8xYJDjXjVeCSgHgNgr+588V3INj+AtilErqLQ+NS9juFIpprprFvKMZkZGvNCg1VSY0OgrQU4ZQQYIaBZgRHCsmXw62/8rLZ1XapT5p8KF3pQXMQJgCAs1ZJHc+eM1Izl11X7+j5wLKdFk5IQMqaMJF05NtZIBHsMKQQ62qOERnd5Eg8N68i3//efAdh2xP5ra0LA5z5nAUh0gvLwnwSRtp5+8qVDjz9zH/L5ChYtsrjqqigsjISnXFn32H0VPHYfgL9vufzSD9iV51zHnV1ZrVYJAKkKIJ69GqL2tlOQKAEZffIn0nccWUcWEIVJBCmyb9+9LLJUiERFuFYZ4ULlrg6TOWv5l0OilVD1uPBCG1dv1FgQAOHaaw1uvDEE0Nn60WvXqfcjw//67VUgGsRH/iqNr3+9goODDzCwSJkEqqwSI2aVsufp01pyb7u0r0D053jihgBfXDv2CHLjEWakzl7+L+jsJJRKAmZwgkwyE4plwrbtt9laXBq7MLU6IURuLRLXfVxdnPdYscK6gYFf854JnwqaJ3wVbB3E1ZKazBy1yXUxieLeCKCiRH7WQNEHC0Iq1si1L6iqsgrBVcvAYAFY50bFIevnGRB5t+Plj6ZaOtYh1wZyYYyjS3xgDEaZHXfOe38wMnR3ODDwv4/qmsUFmSqSro8cyaGeeM0OY6Q0sej1yoDEoxBiSZ10QnP1HddYTNtB2D51/Ebuvx+48EJBX5/WjukejuKjv/a0084M3vGWO9pWnP9A8Y67Phr29T0djUcJa9YYXHBBVIe3bBlw7bUYXr7839rbWxfyqgs/JeIdVG3ycQCA5RyANICyMEwtcRSfVSLVegwT1lVk5ZkNP04dd9zHMXFCBAHXyq/IqBdvlp1yYVOl/D+LRB8FEB0jFkmi9YhTb7xRggWzT8lecckPePHiE2Et2lP2zoNfveEtuP76AwDIbXzxx+bEBas1m2M4F6+3gkBGmXxw1umrs4XS86Xlq78e9z+6n+gIM+Xe3XMDL1x4ri+UxJDGRzIJUFFKp0i2bNl18MHHbrMRkBvPBYmPnaCtx3D+ZCACAaoDA1/jdPMSM+OkD6vCKWlUMXoInB8n61SgYCgo0n4R9GwA2Oh2mPi+LggivhdoaXgLgBC9nxtTypL3uGCFdQMDD9Geyf9gMyd9DiAHiEVSJBn9w5SbKDz9+K/i4G/XQvt3xcnNI9eRhWGgiBijdoILQFSCohAd5+uxIoiQMkoC/VjQwBgaoihhFt2Kf4T1PdLQ6ova3Q3k87b5vOX/y82coZg69fxsW+ujqU2bv6uPPn1jkeg3SNw6AFi/Hrjxxuj/6XR77eKReosRPzgdBlAFAFalRAFS7WOxFvYCaHwDUH+/KfX0PM7Llv466Jp0FkLxABmNr+AlIoMg5VMrV3wk6Jx8in9uw/8/8qv77gfR/rhZkzth3iI+ffnVfPzcj9PMmU1aKns4r/b0087q/NRH7t7z5esvAdG+wj0PPWBPWvICn7zkRFXxRGwi15mhAoO2dslcctF1wYwpZ1Qfe/Jfy48/+SSIynE/zU2rLrggOOWkT/OCBeepqifxBnHhLwgQY7xhsvLq69/C0NB+SzWXLA60Yw2ijHpR5tFoYCBKaubzf5mi1KlmyrxlgHgARpOVH0N1P3iMB4b4AAEBShzfkaeq6qCFgw8AAO6//1Amj8cQ5vP/wKnclWbK3FPJiYCJ4+OCIBBDnOdJsyal5l/4nSrRZfF59SPPj6J7DseuRq0MY1yK0e5YX9SRtf9rNPVQii+7yL3tsk/yyYtO9eWyQxgyTZ2cDqZNXa0LFlzbemDwQezZc5fftuNB99zG1ypDQ9Vg3ryO1LKT3kMnL/oQVJWJrVKcHAWExFO4/+BGJGttjKutQ0PxaaQMgEpiltZ+kUHk/TPP/tdgxtQB6pqsqEQ33yRHAeBgYOBp2SnnBnNnndt2+ql7ZKSwhVVLmkp3mfaW+TR9BgsDKFeFjTEQgR8acbR08bJJH//z2yr3rb1y5KlNeyrPbuhrmjXzx9raKuTEqIn0lYKASoU1kxFz+vL3ZmbOeG+w8vxXqRruICaiXHYmd3VN1wkToOWKZ/GmMRGgXoQzTcZt3Ljr4M/v+Ap6e9mqakpJwYSo+L3mcKMerB59jxX5vIIorL7y+LtS6czjdtL0FngnsMyHllHEbl/slTU2ROAawkWIlTqnSAp7XTiy64cAgIFxK4uTxGooO174EGVzj3NLB5M4BRuipExZYSDizMS5l9pJu/7c5fPfOKZ4ZhypFyhEGTwa6os8MI0sZ/JO/QK/KF7E7+snIXp7GVdf7ZsvOHOhWbrks17Jo1o1YBA5pzBWdOZUQ3NnnW+dPz914CD8BedUm4RCNKVyNLkTXgUcOiTFEcQcXwdVJPfqaz9pmBpJw7AlvketpvdScTpq6hUeN80z5Z78OjNt6n/PvKnr05LNhAhddCOKSMRaXowODYumM6B5x3Uaps4kV6rioWHoCGqSEieyBlQNjQ9dqJMmnGls0wyo7i0T3ZSaNePi4KKVf+Y5DOF8AFLEVwwDVc+i6mnSJLZTpswBYY4kLnLohIpFEGCiNEY8udCpplMie3fayhO/uRbDw/uwYYPh+JxZnR0i9ZE4aYTxgN/xSaBXGWD4Jb/rpXdraZg1yEhkpuJQKL55v34Xh4zjiwigCe8SlKwjThkd3Pc9jOzcEJdIHM6F8bjgAhsWtz3t9rzWC1GjJuWjQ1QM5fgGSV81sNabyXO/BLTNw7p17ojzNMKNucZknRITQjT+V8cViSQ8O5YjysdGDFXYiZM+aGfPalNRJYUwDGBSBCJjKqFSYcT7asW55pxg5vQU5kzPoXMitBp6rkZHSuOAGaLquDlr/Usvry/dO3ALbrghiOccVzSNrrBILjVJWakvRE9e0N9vCjfd+t/cI0/8kE0QaCrtIBJNXCQukSIm55nKZUW5LFqueJTLQtVQScRSfNsaEUGUBS2taoZLQeXhR/988IlnnkRPD6O/3wx950d/GT66/h7KpgMYDtmJclxNQgows2ERokpVUKp4LpY8SmUh51ijiy7idAgAVZGmJkG1ZKsP/PozpV+tuxUrVljk856JGo5zaHyjShy68WHdjcNRBAL4Ay/d7ndvWsPirYK9RgA+VHy0UHEfxAE4GJVFjy5kEh8dKVUNjQkC2bPp1ermRz8D9HJ8S+PhKXbN3K6nviwHtz+tQdqSwsc31CT9E4uDbZ/ekpl76rehyoe/kwBQtTRKWrQGWETJWD70a4QIl4xCJ420sdZzSymMUxzwu1Bfn0dvLx987rf/WLrr3v/B+/ZZam8xmk4JAM+iSqpEQoa8WHKOUa2qlsuKSFCiEp44/SWGQ25ttrrht3v9vQPvAZHD9rWRbqi6DHlJElLxUmg9PtNgtErp6RGo8uC3f/A+t/a+63h42CJtScQ7dT4u14ruvoNhIo7uFYiym7Hv5wXqvIiqM00Z5l27uXLfur8p3X7vDTXIOerHD/3PG97m1z14i6lWAgSGVMVBooCLiaL4iYmJozsJ0AAdqwhUREThqDnHfHC/8fc98Oniz+78R/T21jwQVqKUMnsi9krkI7YiT8QebCSZ+zFTnNSsbn2iz+3Y+DNALFRDja669CDyAHuYwMNkPdnUqAOL0XoZhTFM6gO3fcOz5c2Pvwko7ox/VvBoSETNNSvvfOGDOLgrRJCCijioRvcvgz1gIGQqPH3hhenZZ/fGGfJxTYUNAkvMokxOiXztYaIHrDlkgThlFcZ6MPs4L+KFSGDYU8qoNtl43r3HvraHm29fn2DTpqHiTbd8KvzlbStl/ZMDNDzMJpMxGgQkRBLf9i6ITjnE4qEJsuPVsmhTljidCvTZ51+u/Py2Nw0/++KL+NznGFgkAGAYWVjjYUw0/3g/la2HtaJaGas5oh+NUsXg93/0MX/rLz8kGzfuNdZayjWRGqvK7JWNEMX3wJNqnNgSELwaA8qk2Yi3uv7J34Y/v3XV8M9u+xr6R1U5xLUsVBj6X999R/iruz+jW7ZUOJu2yGUJqZQIkVeoqIhG+L4qaXzlVPyraZROMRGsPPfcK+Ftd10+lP/lP6O/3zQilJbCSgphCGhD36pAyNCw2ow3HqUqBgY8enu50tf3fkvm4aBj9pIkraSIlYf3hhXQajkyMeKjhJv3kEqR/MjeV2lo1zeq29Z/A8Ag3tivoPn49sKn3O72jzDjRgoyDYAdA2RAPjRiAgQdcz+HkX3rKvn8PeNCzc4BlTJTJcskEpeqAxp6w4GHFoqN9XAEQP3giJVy2VC1YmCiS0sgACohqBSiWq2+wWU9KhH6+7nQ03M/Hlp/YW7Feat44YK/QGfHhXbixIloboJaE13gl8BhMXxPoYMfHoHuf30bvb71+4Pf+dGXABys1akl1ww5D3JiKAxN4ikAAKwBq8CLjBcHRuhAf78Z7On5Lu4euKvtfVf/lZk7613omDRH2loNyIAlijeUayVTxOLh9+2F7tr9HL/yyrcO5m/7JoDiYX5QKqq2VcUQ0T+mfrPhlua3rPxrnT79HTppUidyTWDEsqjxnXImCvVIBHpgP3Tzno366pYfHLzpln8FcDDqZ3Tei4KOhT2Uyc6K7kuMYqso0mDWsLi3suu57+J3+7m+mMGz0+204/+EOWiK+lBiGAhEWASucvB+t2/zE/Hn1bYvOE/Zpv3+Fx5D/Sf33oiwHDIG0zbv7ZRtPw4QRDeAczJXiHrHNsVa3HtPuOelp8b0FbHW/PmtzcfP76ZUaiIMKTMRK5OI92yYwh17Hhl58MGHkjkA0Mx5Z62giR2nMYOsNVHtTNWrBwzK5YPFu9b+AEAZdfb9/VB3t0F/v9RAhUxmZtPKc1eazilnc2vzKdySmazWNEeT42FfLO+i/Qef1l071w3dvvYuAPviRGkjdM8ApPnsZSfS1OlvYcOA9zaCQVlCA+ZicXDk9ru/i+gnBsef0+jat7bmyy5aqdNmvMnkMqchnZoGw01MBCUuaKn6OoaHH6ZXNt89eM+D6wBUQXTEa1xrNFqgpubedtlK7ui8ELnsqZxNTwZRWzy4YaqEr9Fw4VHZvvWuodvvuR9A+Uj9/B9Lsl1MXGEhLwAAAABJRU5ErkJggg==" alt="NR1Psico" style="height:32px"></a>
-  <div class="nav-links">
+  <button class="mob-btn" id="mobBtn" onclick="document.getElementById('mobMenu').classList.toggle('open');this.classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="mobMenu">
     <a href="#como-funciona">Como funciona</a>
     <a href="#entregaveis">O que você recebe</a>
     <a href="#planos">Planos</a>
@@ -278,12 +625,11 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
 <section class="hero"><div class="c"><div class="hg">
   <div>
     <div class="hbadge">● NR-1 · Fiscalização ativa desde 2024</div>
-    <h1>Sua empresa pode ser multada com a nova NR-1.<br><em>Resolva em poucos dias.</em></h1>
-    <p style="color:#ffffff;font-size:16px;margin-bottom:16px;max-width:480px">Diagnóstico completo de riscos psicossociais com relatório técnico pronto para auditoria, conforme a NR-1.</p>
-    <div style="font-size:13px;color:#ffffff;opacity:0.7;margin-bottom:8px">✓ Relatório técnico em 6 dias &nbsp; ✓ Pronto para auditoria &nbsp; ✓ Plano de ação incluso</div>
+    <h1>Sua empresa pode estar em risco com a NR-1 — <em>sem perceber</em></h1>
+    <p style="color:#ffffff;font-size:16px;margin-bottom:16px;max-width:480px">Identifique e controle riscos psicossociais com um diagnóstico rápido e acompanhamento contínuo.</p>
     <div class="hbtns">
-      <a href="#diagnostico" class="bp">Quero avaliar minha empresa agora →</a>
-      <a href="#entregaveis" class="bs">Ver exemplo de relatório</a>
+      <a href="#planos" class="bp">Quero fazer o diagnóstico da minha empresa →</a>
+      <a href="https://wa.me/5524992992759" target="_blank" class="bs">Falar com especialista</a>
     </div>
   </div>
   <div>
@@ -320,6 +666,14 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
   <div><b>99%</b><p>Conformidade em auditorias</p></div>
   <div><b>↓ Riscos</b><p>Trabalhistas e afastamentos</p></div>
 </div></div></div>
+
+<!-- BLOCO DE DOR -->
+<section style="padding:60px 0;background:var(--lt)"><div class="c" style="max-width:760px;margin:0 auto;text-align:center">
+  <div class="sl" style="color:var(--gn)">O Problema</div>
+  <div class="std">O problema não é visível até virar problema real</div>
+  <p style="font-size:16px;color:var(--tm);line-height:1.8;margin-top:8px">Sobrecarga, estresse e falhas na liderança não aparecem em relatórios tradicionais. Eles se acumulam no dia a dia e, quando surgem, já impactaram produtividade, clima e até a segurança da empresa.</p>
+  <p style="font-size:15px;color:var(--bl);font-weight:600;margin-top:16px;font-style:italic">Se sua empresa nunca avaliou riscos psicossociais, ela já pode estar exposta sem saber.</p>
+</div></section>
 
 <!-- HOW IT WORKS -->
 <section class="how s" id="como-funciona"><div class="c">
@@ -415,6 +769,194 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
   </div>
 </div></section>
 
+<!-- PLANOS DIAGNÓSTICO -->
+<section class="pricing s" id="planos"><div class="c">
+  <div style="text-align:center">
+    <div class="sl">Diagnóstico NR-1</div>
+    <div class="stl" style="text-align:center">Escolha o diagnóstico ideal para o porte da sua empresa</div>
+    <p style="color:var(--tm2);font-size:14px">Pagamento único — resultado em até 6 dias úteis.</p>
+  </div>
+  <div class="price-g">
+    <div class="price-card">
+      <h4>Essencial</h4>
+      <div class="price-sub">Até 30 colaboradores</div>
+      <div class="price-val">R$ 2.500<span>/único</span></div>
+      <ul class="price-list">
+        <li>Questionário completo</li>
+        <li>Relatório técnico</li>
+        <li>Principais riscos identificados</li>
+        <li>Certificado válido por 12 meses</li>
+      </ul>
+      <p style="font-size:12px;color:var(--tm2);margin-bottom:16px;font-style:italic">Visão clara do cenário atual da empresa</p>
+      <a href="https://mpago.li/2cNptyw" target="_blank" class="pbtn p2">Quero fazer o diagnóstico →</a>
+    </div>
+    <div class="price-card ft">
+      <div class="price-badge">Mais contratado</div>
+      <h4>Profissional</h4>
+      <div class="price-sub">Até 100 colaboradores</div>
+      <div class="price-val">R$ 4.500<span>/único</span></div>
+      <ul class="price-list">
+        <li>Tudo do Essencial</li>
+        <li>Análise por departamento</li>
+        <li>Plano de ação</li>
+        <li>Dashboard inicial</li>
+      </ul>
+      <p style="font-size:12px;color:var(--tm2);margin-bottom:16px;font-style:italic">Direcionamento prático do que precisa ser ajustado</p>
+      <a href="https://mpago.li/2bqtx5L" target="_blank" class="pbtn p1">Quero fazer o diagnóstico →</a>
+    </div>
+    <div class="price-card">
+      <h4>Corporativo</h4>
+      <div class="price-sub">Até 300 colaboradores</div>
+      <div class="price-val">R$ 7.500<span>/único</span></div>
+      <ul class="price-list">
+        <li>Tudo do Profissional</li>
+        <li>Dashboard completo</li>
+        <li>Prioridade no suporte</li>
+        <li>Plano de ação priorizado (o que resolver primeiro)</li>
+        <li>30 dias de monitoramento contínuo com relatório de evolução</li>
+      </ul>
+      <p style="font-size:12px;color:var(--tm2);margin-bottom:16px;font-style:italic">Diagnóstico completo com início do acompanhamento</p>
+      <a href="https://mpago.li/1kEs9D4" target="_blank" class="pbtn p2">Quero fazer o diagnóstico →</a>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--tm2)">Após a solicitação, nossa equipe entra em contato para entender o porte da empresa e iniciar o processo.</p>
+</div></section>
+
+<!-- BLOCO DE TRANSIÇÃO -->
+<div class="trans-block"><div class="c">
+  <div class="trans-icon">🔄</div>
+  <h3>O diagnóstico é só o começo</h3>
+  <p>O diagnóstico mostra o cenário atual. Mas o que realmente protege a empresa é acompanhar o que acontece depois. Sem monitoramento, os riscos voltam.</p>
+  <div style="display:inline-block;background:var(--gn);color:#fff;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;margin:16px 0">Nos primeiros 30 dias já é possível identificar mudanças nos padrões de risco.</div>
+  <div class="trans-arrow">↓</div>
+</div></div>
+
+<!-- MONITORAMENTO CONTÍNUO -->
+<!-- PLANOS CONTÍNUO -->
+<section class="pricing s" id="continuo-planos"><div class="c">
+  <div style="text-align:center">
+    <div class="sl">Planos NR1Psico Contínuo</div>
+    <div class="stl" style="text-align:center">Monitoramento mensal para manter sua empresa sempre protegida</div>
+    <p style="color:var(--tm2);font-size:14px">Assinatura mensal.</p>
+  </div>
+  <div style="text-align:center;margin:16px 0 0"><span class="indicado-badge">Indicado para empresas que já realizaram o diagnóstico</span></div>
+  <div class="price-g">
+    <div class="price-card">
+      <h4>Essencial</h4>
+      <div class="price-sub">Até 30 colaboradores</div>
+      <div class="price-val">R$ 900<span>/mês</span></div>
+      <ul class="price-list">
+        <li>Coleta contínua</li>
+        <li>Canal ativo</li>
+        <li>Relatório mensal</li>
+      </ul>
+      <a href="https://mpago.la/2Ae9Aq2" target="_blank" class="pbtn p2">Quero acompanhar minha empresa →</a>
+    </div>
+    <div class="price-card ft">
+      <div class="price-badge">Mais contratado</div>
+      <h4>Profissional</h4>
+      <div class="price-sub">Até 100 colaboradores</div>
+      <div class="price-val">R$ 2.500<span>/mês</span></div>
+      <ul class="price-list">
+        <li>Tudo do Essencial</li>
+        <li>Análise de riscos</li>
+        <li>Tendências</li>
+        <li>Insights com recomendações</li>
+      </ul>
+      <a href="https://mpago.la/2jiqFsv" target="_blank" class="pbtn p1">Quero acompanhar minha empresa →</a>
+    </div>
+    <div class="price-card">
+      <h4>Corporativo</h4>
+      <div class="price-sub">Até 300 colaboradores</div>
+      <div class="price-val">R$ 5.000<span>/mês</span></div>
+      <ul class="price-list">
+        <li>Tudo do Profissional</li>
+        <li>Relatório estratégico</li>
+        <li>Recomendações estruturadas</li>
+        <li>Prioridade no suporte</li>
+      </ul>
+      <a href="https://mpago.la/32nsX5H" target="_blank" class="pbtn p2">Quero acompanhar minha empresa →</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="continuo s" id="continuo"><div class="c">
+  <div style="text-align:center">
+    <div class="sl" style="color:var(--gn)">Monitoramento Contínuo</div>
+    <div class="std">NR1Psico Contínuo</div>
+    <p style="font-size:16px;color:var(--tb);max-width:620px;margin:0 auto 8px;font-style:italic">Acompanhamento contínuo dos riscos psicossociais com suporte ao colaborador e dados estratégicos para a empresa.</p>
+    <p style="font-size:14px;color:var(--tm);max-width:560px;margin:0 auto">Seu monitoramento ativo que transforma a prevenção em uma prática diária.</p>
+  </div>
+
+  <div class="cont-cards">
+    <div class="cont-card">
+      <h4 style="background:var(--bl);color:#fff;margin:-28px -24px 16px;padding:14px 24px;border-radius:10px 10px 0 0">🏢 Para a Empresa:</h4>
+      <div class="cont-item"><span class="cont-check">✔</span><span>Visão atualizada dos principais riscos e tendências psicossociais.</span></div>
+      <div class="cont-item"><span class="cont-check">✔</span><span>Relatórios mensais com insights reais.</span></div>
+      <div class="cont-item"><span class="cont-check">✔</span><span>Cumprimento eficaz da NR-1 com dados contínuos.</span></div>
+      <div style="margin-top:20px;background:var(--dk2);border-radius:10px;padding:14px">
+        <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Dashboard de tendências</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.4)"><span style="width:72px;flex-shrink:0">Sobrecarga</span><div style="flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden"><div style="width:68%;height:100%;background:#DC3545;border-radius:3px"></div></div><span>68</span></div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.4)"><span style="width:72px;flex-shrink:0">Autonomia</span><div style="flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden"><div style="width:55%;height:100%;background:#E67E22;border-radius:3px"></div></div><span>55</span></div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.4)"><span style="width:72px;flex-shrink:0">Reconhecimento</span><div style="flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden"><div style="width:28%;height:100%;background:#0E968C;border-radius:3px"></div></div><span>28</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cont-card">
+      <h4 style="background:var(--bl);color:#fff;margin:-28px -24px 16px;padding:14px 24px;border-radius:10px 10px 0 0">👤 Para o Colaborador:</h4>
+      <div class="cont-item"><span class="cont-check">✔</span><span>Canal anônimo de apoio emocional 24/7.</span></div>
+      <div class="cont-item"><span class="cont-check">✔</span><span>Acolhimento e orientação confidencial.</span></div>
+      <div class="cont-item"><span class="cont-check">✔</span><span>Suporte rápido e seguro.</span></div>
+      <div style="margin-top:20px;background:var(--dk2);border-radius:10px;padding:14px">
+        <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Relatório mensal</div>
+        <div style="display:flex;align-items:flex-end;gap:5px;height:60px">
+          <div style="flex:1;background:rgba(14,150,140,.35);border-radius:3px 3px 0 0;height:40%"></div>
+          <div style="flex:1;background:rgba(14,150,140,.5);border-radius:3px 3px 0 0;height:55%"></div>
+          <div style="flex:1;background:rgba(14,150,140,.6);border-radius:3px 3px 0 0;height:48%"></div>
+          <div style="flex:1;background:rgba(14,150,140,.75);border-radius:3px 3px 0 0;height:70%"></div>
+          <div style="flex:1;background:rgba(14,150,140,.85);border-radius:3px 3px 0 0;height:63%"></div>
+          <div style="flex:1;background:#0E968C;border-radius:3px 3px 0 0;height:90%"></div>
+        </div>
+        <div style="font-size:9px;color:rgba(255,255,255,.25);margin-top:4px;text-align:right">↑ engajamento crescendo</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:8px"><div class="sl" style="color:var(--gn)">Como Funciona:</div></div>
+  <div class="cont-steps">
+    <div class="cont-step"><div class="cont-step-num">1</div><h4>Escuta Contínua</h4><p>Colaboradores acessam nosso canal anônimo para conversar sobre suas preocupações.</p></div>
+    <div class="cont-step"><div class="cont-step-num">2</div><h4>Análise Inteligente</h4><p>Identificamos os temas mais recorrentes e as tendências emergentes.</p></div>
+    <div class="cont-step"><div class="cont-step-num">3</div><h4>Relatórios Estratégicos</h4><p>Você recebe insights mensais para agir com segurança e precisão.</p></div>
+  </div>
+
+  <div class="cont-vantagens">
+    <div style="font-size:13px;font-weight:700;color:var(--bl);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Vantagens do NR1Psico Contínuo:</div>
+    <div class="cont-vantagem"><span style="color:var(--bl);font-size:16px">✔</span><strong>Acompanhamento ativo e constante.</strong></div>
+    <div class="cont-vantagem"><span style="color:var(--bl);font-size:16px">✔</span><strong>Prevenção que se traduz em ações reais.</strong></div>
+    <div class="cont-vantagem" style="margin-bottom:0"><span style="color:var(--bl);font-size:16px">✔</span><strong>Decisões baseadas em dados, não em suposições.</strong></div>
+  </div>
+</div></section>
+
+
+<!-- BLOCO DE VALOR -->
+<section style="padding:60px 0;background:var(--gbg)"><div class="c" style="max-width:760px;margin:0 auto;text-align:center">
+  <div class="sl" style="color:var(--gn)">O que sua empresa recebe todo mês</div>
+  <div class="std">Visibilidade contínua para agir com segurança</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px;text-align:left">
+    <div style="background:#fff;border:1px solid var(--blt);border-radius:12px;padding:20px;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--gn2);font-size:18px;flex-shrink:0">✔</span><div><strong style="font-size:14px;color:var(--bl)">Indicadores atualizados</strong><p style="font-size:12px;color:var(--tm);margin-top:4px">Visão atualizada dos riscos e do clima organizacional.</p></div></div>
+    <div style="background:#fff;border:1px solid var(--blt);border-radius:12px;padding:20px;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--gn2);font-size:18px;flex-shrink:0">✔</span><div><strong style="font-size:14px;color:var(--bl)">Evolução dos riscos</strong><p style="font-size:12px;color:var(--tm);margin-top:4px">Acompanhe como os riscos evoluem ao longo do tempo.</p></div></div>
+    <div style="background:#fff;border:1px solid var(--blt);border-radius:12px;padding:20px;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--gn2);font-size:18px;flex-shrink:0">✔</span><div><strong style="font-size:14px;color:var(--bl)">Alertas críticos</strong><p style="font-size:12px;color:var(--tm);margin-top:4px">Notificação imediata quando um risco atinge nível preocupante.</p></div></div>
+    <div style="background:#fff;border:1px solid var(--blt);border-radius:12px;padding:20px;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--gn2);font-size:18px;flex-shrink:0">✔</span><div><strong style="font-size:14px;color:var(--bl)">Insights claros</strong><p style="font-size:12px;color:var(--tm);margin-top:4px">Interpretação acessível dos dados para o RH e gestores.</p></div></div>
+    <div style="background:#fff;border:1px solid var(--blt);border-radius:12px;padding:20px;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--gn2);font-size:18px;flex-shrink:0">✔</span><div><strong style="font-size:14px;color:var(--bl)">Recomendações práticas</strong><p style="font-size:12px;color:var(--tm);margin-top:4px">Ações concretas para cada risco identificado.</p></div></div>
+  </div>
+</div></section>
+
+<!-- BLOCO FINAL -->
+<section style="padding:60px 0;background:var(--dk);text-align:center"><div class="c">
+  <p style="font-family:var(--fd);font-size:clamp(22px,3.5vw,32px);color:var(--tw);line-height:1.4;max-width:700px;margin:0 auto">O diagnóstico identifica o problema. O monitoramento garante que ele não volte.</p>
+</div></section>
+
 <!-- DELIVERABLES -->
 <section class="del s" id="entregaveis"><div class="c">
   <div style="text-align:center"><div class="sl" style="color:var(--gn)">O que você recebe</div>
@@ -493,192 +1035,6 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
   </div>
 </div></section>
 
-<!-- PRICING -->
-<section class="pricing s" id="planos"><div class="c">
-  <div style="text-align:center"><div class="sl">Planos e preços</div>
-  <div class="stl" style="text-align:center">Escolha o nível de adequação ideal para sua empresa</div>
-  <p style="color:var(--tm2);font-size:14px">Pagamento único — sem assinatura, sem mensalidade.</p></div>
-  <div class="price-g">
-    <div class="price-card"><h4>Essencial</h4><div class="price-sub">Para pequenas empresas · Até 15 colaboradores</div><div class="price-val">R$ 1.500<span>/único</span></div>
-      <ul class="price-list"><li>Questionário COPSOQ II completo</li><li>Relatório Técnico</li><li>Certificado com QR de validação (válido por um ano)</li><li>Entrega em até 6 dias</li></ul>
-      <a href="https://mpago.li/2cNptyw" target="_blank" class="pbtn p2">Contratar agora →</a></div>
-    <div class="price-card ft"><div class="price-badge">Mais escolhido</div><h4>Profissional</h4><div class="price-sub">Ideal para médias empresas · 15 a 30 colaboradores</div><div class="price-val">R$ 3.000<span>/único</span></div>
-      <ul class="price-list"><li>Tudo do Essencial +</li><li>Resumo executivo visual</li><li>Análise por departamento</li><li>Plano de ação detalhado</li><li>Acesso ao dashboard</li></ul>
-      <a href="https://mpago.li/2bqtx5L" target="_blank" class="pbtn p1">Contratar agora →</a></div>
-    <div class="price-card"><h4>Corporativo</h4><div class="price-sub">Para auditoria completa · 30+ colaboradores</div><div class="price-val">R$ 5.500<span>/único</span></div>
-      <ul class="price-list"><li>Tudo do Profissional +</li><li>Acompanhamento 90 dias</li><li>Follow-up com gestores</li><li>Dashboard completo</li><li>Prioridade no suporte</li></ul>
-      <a href="https://mpago.li/1kEs9D4" target="_blank" class="pbtn p2">Contratar agora →</a></div>
-  </div>
-  <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--tm2)">Acima de 300 colaboradores? <a href="https://wa.me/5524992992759?text=Preciso%20de%20plano%20personalizado" style="color:var(--gn2)">Fale conosco →</a></div>
-  <p style="text-align:center;margin-top:14px;font-size:13px;color:var(--tm2);font-style:italic">Após a solicitação, nossa equipe entra em contato para entender o porte da empresa e iniciar o processo.</p>
-</div></section>
-
-<!-- TRANSITION -->
-<div class="trans-block"><div class="c">
-  <div class="trans-icon">🔄</div>
-  <h3>E depois do diagnóstico?</h3>
-  <p>Identificar os riscos é o primeiro passo. Para garantir que esses riscos sejam acompanhados ao longo do tempo, oferecemos também o <strong>NR1Psico Contínuo</strong> — um sistema de monitoramento e apoio que mantém sua empresa sempre atualizada sobre o bem-estar da equipe.</p>
-  <div class="trans-arrow">↓</div>
-</div></div>
-
-<!-- CONTINUO: header + cards + como funciona + vantagens -->
-<section class="continuo s" id="continuo"><div class="c">
-  <div style="text-align:center">
-    <div class="sl" style="color:var(--gn)">Monitoramento contínuo</div>
-    <div class="std">NR1Psico Contínuo</div>
-    <p style="font-size:16px;color:var(--tb);max-width:620px;margin:0 auto 8px;font-style:italic">Acompanhamento contínuo dos riscos psicossociais com suporte ao colaborador e dados estratégicos para a empresa.</p>
-    <p style="font-size:14px;color:var(--tm);max-width:560px;margin:0 auto">Seu monitoramento ativo que transforma a prevenção em uma prática diária.</p>
-  </div>
-
-  <div class="cont-cards">
-    <div class="cont-card">
-      <h4 style="background:var(--bl);color:#fff;margin:-28px -24px 16px;padding:14px 24px;border-radius:10px 10px 0 0">🏢 Para a Empresa:</h4>
-      <div class="cont-item"><span class="cont-check">✔</span><span>Visão atualizada dos principais riscos e tendências psicossociais.</span></div>
-      <div class="cont-item"><span class="cont-check">✔</span><span>Relatórios mensais com insights reais.</span></div>
-      <div class="cont-item"><span class="cont-check">✔</span><span>Cumprimento eficaz da NR-1 com dados contínuos.</span></div>
-      <div style="margin-top:20px;background:var(--dk2);border-radius:10px;padding:14px">
-        <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Dashboard de tendências</div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.4)"><span style="width:72px;flex-shrink:0">Sobrecarga</span><div style="flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden"><div style="width:68%;height:100%;background:#DC3545;border-radius:3px"></div></div><span>68</span></div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.4)"><span style="width:72px;flex-shrink:0">Autonomia</span><div style="flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden"><div style="width:55%;height:100%;background:#E67E22;border-radius:3px"></div></div><span>55</span></div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:rgba(255,255,255,.4)"><span style="width:72px;flex-shrink:0">Reconhecimento</span><div style="flex:1;height:7px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden"><div style="width:28%;height:100%;background:#0E968C;border-radius:3px"></div></div><span>28</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="cont-card">
-      <h4 style="background:var(--bl);color:#fff;margin:-28px -24px 16px;padding:14px 24px;border-radius:10px 10px 0 0">👤 Para o Colaborador:</h4>
-      <div class="cont-item"><span class="cont-check">✔</span><span>Canal anônimo de apoio emocional 24/7.</span></div>
-      <div class="cont-item"><span class="cont-check">✔</span><span>Acolhimento e orientação confidencial.</span></div>
-      <div class="cont-item"><span class="cont-check">✔</span><span>Suporte rápido e seguro.</span></div>
-      <div style="margin-top:20px;background:var(--dk2);border-radius:10px;padding:14px">
-        <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">Relatório mensal</div>
-        <div style="display:flex;align-items:flex-end;gap:5px;height:60px">
-          <div style="flex:1;background:rgba(14,150,140,.35);border-radius:3px 3px 0 0;height:40%"></div>
-          <div style="flex:1;background:rgba(14,150,140,.5);border-radius:3px 3px 0 0;height:55%"></div>
-          <div style="flex:1;background:rgba(14,150,140,.6);border-radius:3px 3px 0 0;height:48%"></div>
-          <div style="flex:1;background:rgba(14,150,140,.75);border-radius:3px 3px 0 0;height:70%"></div>
-          <div style="flex:1;background:rgba(14,150,140,.85);border-radius:3px 3px 0 0;height:63%"></div>
-          <div style="flex:1;background:#0E968C;border-radius:3px 3px 0 0;height:90%"></div>
-        </div>
-        <div style="font-size:9px;color:rgba(255,255,255,.25);margin-top:4px;text-align:right">↑ engajamento crescendo</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="text-align:center;margin-top:8px"><div class="sl" style="color:var(--gn)">Como Funciona:</div></div>
-  <div class="cont-steps">
-    <div class="cont-step">
-      <div class="cont-step-num">1</div>
-      <h4>Escuta Contínua</h4>
-      <p>Colaboradores acessam nosso canal anônimo para conversar sobre suas preocupações.</p>
-    </div>
-    <div class="cont-step">
-      <div class="cont-step-num">2</div>
-      <h4>Análise Inteligente</h4>
-      <p>Identificamos os temas mais recorrentes e as tendências emergentes.</p>
-    </div>
-    <div class="cont-step">
-      <div class="cont-step-num">3</div>
-      <h4>Relatórios Estratégicos</h4>
-      <p>Você recebe insights mensais para agir com segurança e precisão.</p>
-    </div>
-  </div>
-
-  <div class="cont-vantagens">
-    <div style="font-size:13px;font-weight:700;color:var(--bl);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px">Vantagens do NR1Psico Contínuo:</div>
-    <div class="cont-vantagem"><span style="color:var(--bl);font-size:16px">✔</span><strong>Acompanhamento ativo e constante.</strong></div>
-    <div class="cont-vantagem"><span style="color:var(--bl);font-size:16px">✔</span><strong>Prevenção que se traduz em ações reais.</strong></div>
-    <div class="cont-vantagem" style="margin-bottom:0"><span style="color:var(--bl);font-size:16px">✔</span><strong>Decisões baseadas em dados, não em suposições.</strong></div>
-  </div>
-</div></section>
-
-<!-- CONTINUO PLANOS -->
-<section class="pricing s" id="continuo-planos"><div class="c">
-  <div style="text-align:center"><div class="sl">Planos NR1Psico Contínuo</div>
-  <div class="stl" style="text-align:center">Monitoramento mensal para manter sua empresa sempre protegida</div>
-  <p style="color:var(--tm2);font-size:14px">Assinatura mensal · Contrato mínimo de 6 meses.</p></div>
-  <div class="price-g">
-    <div class="price-card">
-      <h4>Starter</h4><div class="price-sub">Até 15 colaboradores</div>
-      <div class="price-val">R$ 759<span>/mês</span></div>
-      <ul class="price-list">
-        <li>Canal anônimo de apoio 24/7</li>
-        <li>Triagem e encaminhamento inicial</li>
-        <li>3 especialistas</li>
-        <li>Relatório mensal básico</li>
-      </ul>
-      <a href="https://wa.me/5524992992759?text=Ol%C3%A1!%20Quero%20contratar%20o%20NR1Psico%20Cont%C3%ADnuo%20plano%20Starter%20(at%C3%A9%2050%20colaboradores%2C%20R%24690%2Fm%C3%AAs)." target="_blank" class="pbtn p2">Contratar Starter →</a>
-    </div>
-    <div class="price-card ft">
-      <div class="price-badge">Mais Popular</div>
-      <h4>Essencial</h4><div class="price-sub">15 a 30 colaboradores</div>
-      <div class="price-val">R$ 1.309<span>/mês</span></div>
-      <ul class="price-list">
-        <li>Tudo do Starter +</li>
-        <li>7 especialistas temáticos</li>
-        <li>Relatório mensal completo com tendências</li>
-        <li>Alertas de temas críticos</li>
-      </ul>
-      <a href="https://wa.me/5524992992759?text=Ol%C3%A1!%20Quero%20contratar%20o%20NR1Psico%20Cont%C3%ADnuo%20plano%20Essencial%20(at%C3%A9%20100%20colaboradores%2C%20R%241.190%2Fm%C3%AAs)." target="_blank" class="pbtn p1">Contratar Essencial →</a>
-    </div>
-    <div class="price-card">
-      <h4>Corporativo</h4><div class="price-sub">30+ colaboradores</div>
-      <div class="price-val">R$ 2.739<span>/mês</span></div>
-      <ul class="price-list">
-        <li>Tudo do Essencial +</li>
-        <li>Relatório executivo trimestral</li>
-        <li>Suporte prioritário WhatsApp</li>
-        <li>Consultoria mensal com terapeuta</li>
-      </ul>
-      <a href="https://wa.me/5524992992759?text=Ol%C3%A1!%20Quero%20contratar%20o%20NR1Psico%20Cont%C3%ADnuo%20plano%20Corporativo%20(at%C3%A9%20300%20colaboradores%2C%20R%242.490%2Fm%C3%AAs)." target="_blank" class="pbtn p2">Contratar Corporativo →</a>
-    </div>
-  </div>
-</div></section>
-
-<!-- COMBO -->
-<section class="combo-section"><div class="c">
-  <div style="text-align:center">
-    <div class="sl" style="color:var(--or)">Melhor custo-benefício</div>
-    <div class="std">Combo: Diagnóstico + Acompanhamento Contínuo</div>
-    <p style="font-size:15px;color:var(--tm);max-width:620px;margin:0 auto">Contrate o diagnóstico NR1PSICO junto com o acompanhamento contínuo e ganhe condições especiais.</p>
-  </div>
-  <div class="combo-g">
-    <div class="combo-card">
-      <div class="combo-badge">COMBO STARTER</div>
-      <div class="combo-names" style="margin-top:8px">Diagnóstico Essencial + Contínuo Starter</div>
-      <div class="combo-price-diag">R$ 1.500 <span style="font-size:13px;color:var(--tm);font-family:var(--fb)">(único)</span></div>
-      <div class="combo-price-cont">+ R$ 649<span style="font-size:13px;color:var(--tm)">/mês</span></div>
-      <div class="combo-saving">~R$100/mês de desconto</div>
-      <a href="https://wa.me/5524992992759?text=Quero%20o%20Combo%20Starter%20%E2%80%94%20Diagn%C3%B3stico%20%2B%20Cont%C3%ADnuo%20(R%241.500%20%2B%20R%24590%2Fm%C3%AAs)." target="_blank" class="bp-or" style="width:100%;display:block;box-sizing:border-box">Quero o Combo Starter</a>
-    </div>
-    <div class="combo-card" style="border-color:#B8860B;box-shadow:0 4px 24px rgba(184,134,11,.2)">
-      <div class="combo-badge" style="background:linear-gradient(135deg,#B8860B,#D4A017)">⭐ COMBO ESSENCIAL</div>
-      <div class="combo-names" style="margin-top:8px">Diagnóstico Profissional + Contínuo Essencial</div>
-      <div class="combo-price-diag">R$ 3.000 <span style="font-size:13px;color:var(--tm);font-family:var(--fb)">(único)</span></div>
-      <div class="combo-price-cont">+ R$ 1.089<span style="font-size:13px;color:var(--tm)">/mês</span></div>
-      <div class="combo-saving">~R$200/mês de desconto</div>
-      <a href="https://wa.me/5524992992759?text=Quero%20o%20Combo%20Essencial%20%E2%80%94%20Diagn%C3%B3stico%20%2B%20Cont%C3%ADnuo%20(R%243.000%20%2B%20R%24990%2Fm%C3%AAs)." target="_blank" class="bp-or" style="width:100%;display:block;box-sizing:border-box">Quero o Combo Essencial</a>
-    </div>
-    <div class="combo-card">
-      <div class="combo-badge">COMBO CORPORATIVO</div>
-      <div class="combo-names" style="margin-top:8px">Diagnóstico Corporativo + Contínuo Corporativo</div>
-      <div class="combo-price-diag">R$ 5.500 <span style="font-size:13px;color:var(--tm);font-family:var(--fb)">(único)</span></div>
-      <div class="combo-price-cont">+ R$ 2.189<span style="font-size:13px;color:var(--tm)">/mês</span></div>
-      <div class="combo-saving">~R$500/mês de desconto</div>
-      <a href="https://wa.me/5524992992759?text=Quero%20o%20Combo%20Corporativo%20%E2%80%94%20Diagn%C3%B3stico%20%2B%20Cont%C3%ADnuo%20(R%245.500%20%2B%20R%241.990%2Fm%C3%AAs)." target="_blank" class="bp-or" style="width:100%;display:block;box-sizing:border-box">Quero o Combo Corporativo</a>
-    </div>
-  </div>
-  <p class="combo-note">O diagnóstico é cobrado uma única vez. O acompanhamento contínuo é mensal com contrato mínimo de 6 meses.</p>
-</div></section>
-
-<!-- CTA CONTINUO FINAL -->
-<section style="background:var(--dk);padding:70px 0"><div class="c" style="text-align:center">
-  <div class="sl">Pronto para começar?</div>
-  <h2 style="font-family:var(--fd);font-size:clamp(24px,4vw,36px);color:var(--tw);margin-bottom:14px">Pronto para transformar a saúde mental da sua empresa?</h2>
-  <p style="font-size:15px;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 28px">Fale com nossa equipe e entenda qual plano faz mais sentido para o tamanho e momento da sua empresa.</p>
-  <a href="https://wa.me/5524992992759?text=Ol%C3%A1!%20Tenho%20interesse%20no%20NR1Psico%20Cont%C3%ADnuo.%20Pode%20me%20ajudar%3F" target="_blank" class="bp-or" style="font-size:16px;padding:16px 36px">💬 Fale com nossa equipe</a>
-</div></section>
-
 <!-- SECURITY -->
 <section class="security s" id="seguranca"><div class="c">
   <div style="text-align:center"><div class="sl" style="color:var(--gn)">Segurança</div>
@@ -708,12 +1064,7 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
       <div class="contact-item"><h4>Horário de Atendimento</h4><p>Segunda a Sexta: 8h às 18h</p></div>
       <div class="contact-item"><h4>Localização</h4><p>Petrópolis, RJ · Atendimento 100% remoto</p></div>
     </div>
-    <form id="formContato" class="contact-form"><h3>Envie uma mensagem</h3>
-      <div class="cf-row"><input type="text" id="nomeContato" placeholder="Seu nome"><input type="email" id="emailContato" placeholder="voce@empresa.com.br"></div>
-      <div class="cf-row"><input type="text" id="empresaContato" placeholder="Nome da empresa" style="width:100%"></div>
-      <div class="cf-row"><textarea id="mensagemContato" placeholder="Conte-nos como podemos ajudar..."></textarea></div>
-      <button type="submit" class="cf-btn">Enviar Mensagem</button>
-    </form>
+    
   </div>
 </div></section>
 
@@ -722,20 +1073,47 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
   <div style="text-align:center"><div class="sl">Perguntas frequentes</div>
   <div class="stl" style="text-align:center">Tire suas dúvidas</div></div>
   <div class="faq-list">
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Qual a diferença entre diagnóstico e monitoramento?</div><div class="faq-a">O diagnóstico é uma avaliação pontual que identifica os riscos psicossociais da sua empresa. O monitoramento contínuo acompanha esses riscos ao longo do tempo, com coleta de dados, relatórios mensais e recomendações práticas.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso contratar o monitoramento junto com o diagnóstico?</div><div class="faq-a">O monitoramento é contratado separadamente, mas é altamente recomendado. Sem acompanhamento, os riscos tendem a voltar. Empresas que contratam o plano Corporativo de diagnóstico já recebem 30 dias de monitoramento incluso.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Os dados dos colaboradores são protegidos?</div><div class="faq-a">Sim. Todas as respostas são anônimas e protegidas pela LGPD. A empresa recebe apenas dados agregados — nunca informações individuais.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Como funciona o certificado?</div><div class="faq-a">Ao concluir o diagnóstico, geramos um certificado oficial com assinatura digital e QR code de validação. Qualquer pessoa pode escanear o QR e verificar a autenticidade. Validade de 12 meses.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso me adequar à NR-1?</div><div class="faq-a">Sim. A NR-1 se aplica a todas as empresas com empregados CLT, independente do porte ou setor. A exigência de avaliação de riscos psicossociais já está em vigor.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">O que acontece se minha empresa não se adequar?</div><div class="faq-a">Multas de R$ 1.000 a R$ 6.700 por trabalhador exposto, além de vulnerabilidade a ações trabalhistas e interdições.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Quanto tempo leva o diagnóstico?</div><div class="faq-a">O processo completo — da aplicação do questionário à entrega do relatório técnico e certificado — leva até 6 dias úteis.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">O relatório é válido para auditoria?</div><div class="faq-a">Sim. O relatório técnico é baseado na metodologia COPSOQ II, validada internacionalmente, e está alinhado às exigências da NR-1.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Preciso contratar um psicólogo?</div><div class="faq-a">Não necessariamente. A NR-1 exige avaliação com metodologia validada. A NR1Psico oferece isso com o COPSOQ II.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Os dados dos colaboradores são protegidos?</div><div class="faq-a">Sim. 100% anônimo. Nenhum dado pessoal individual é coletado. Resultados são sempre coletivos e agregados.</div></div>
   </div>
 </div></section>
 
-<!-- CLOSING CTA -->
+<!-- FRASE DE FECHAMENTO -->
+<section style="padding:50px 0;background:var(--lt);text-align:center"><div class="c">
+  <p style="font-family:var(--fd);font-size:clamp(18px,2.8vw,26px);color:var(--bl);line-height:1.5;max-width:700px;margin:0 auto"><strong>Empresas que monitoram riscos agem antes.<br>As que não monitoram, reagem depois.</strong></p>
+</div></section>
+
+<!-- CTA FINAL -->
 <section style="padding:60px 0;background:linear-gradient(135deg,#0E968C 0%,#0A7A72 100%);text-align:center"><div class="c">
-  <h2 style="font-family:var(--fd);font-size:clamp(24px,4vw,36px);color:#fff;line-height:1.3;margin-bottom:16px">A adequação à NR-1 não é opcional.</h2>
-  <p style="font-size:16px;color:rgba(255,255,255,.9);max-width:500px;margin:0 auto 28px">Comece agora e evite riscos legais, financeiros e operacionais para sua empresa.</p>
-  <a href="#diagnostico" class="bp" style="background:#fff;color:var(--gn);font-size:16px;padding:16px 32px">Começar diagnóstico agora →</a>
+  <h2 style="font-family:var(--fd);font-size:clamp(24px,4vw,36px);color:#fff;line-height:1.3;margin-bottom:16px">Pronto para proteger sua empresa?</h2>
+  <p style="font-size:15px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto 28px">Comece com o diagnóstico e entenda o cenário real da sua empresa.</p>
+  <a href="#planos" class="bp" style="background:#fff;color:var(--gn);font-size:16px;padding:16px 32px">Quero fazer o diagnóstico →</a>
+  <br>
+  <a href="https://wa.me/5524992992759" target="_blank" style="display:inline-block;margin-top:16px;font-size:14px;color:rgba(255,255,255,.8);text-decoration:underline">ou falar com especialista</a>
+</div></section>
+
+
+<!-- FORMULÁRIO FINAL -->
+<section style="padding:60px 0;background:var(--lt)" id="fale-conosco"><div class="c">
+  <div style="text-align:center;margin-bottom:32px">
+    <div class="sl" style="color:var(--gn)">Fale com a gente</div>
+    <div class="std">Envie uma mensagem</div>
+    <p style="font-size:14px;color:var(--tm)">Tire suas dúvidas ou solicite uma proposta personalizada.</p>
+  </div>
+  <div style="max-width:600px;margin:0 auto">
+    <div class="contact-form">
+      <form id="formContato" class="contact-form"><h3>Envie uma mensagem</h3>
+      <div class="cf-row"><input type="text" id="nomeContato" placeholder="Seu nome"><input type="email" id="emailContato" placeholder="voce@empresa.com.br"></div>
+      <div class="cf-row"><input type="text" id="empresaContato" placeholder="Nome da empresa" style="width:100%"></div>
+      <div class="cf-row"><textarea id="mensagemContato" placeholder="Conte-nos como podemos ajudar..."></textarea></div>
+      <button type="submit" class="cf-btn">Enviar Mensagem</button>
+    </form>
+    </div>
+  </div>
 </div></section>
 
 <!-- FOOTER -->
@@ -773,6 +1151,17 @@ document.addEventListener('DOMContentLoaded',function(){
   pm.addEventListener('click',function(e){if(e.target===pm)pm.style.display='none'});
   tm.addEventListener('click',function(e){if(e.target===tm)tm.style.display='none'});
 });
+
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click', function(){
+    var m = document.getElementById('mobMenu');
+    var b = document.getElementById('mobBtn');
+    if(m) m.classList.remove('open');
+    if(b) b.classList.remove('open');
+  });
+});
+
 </script>
 
 <!-- PRIVACY POLICY MODAL -->
