@@ -636,17 +636,6 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
     <a href="#continuo">NR1Psico Contínuo</a>
     <a href="#diagnostico" class="ncta">Quero avaliar minha empresa</a>
   </div>
-  <button class="nav-ham" id="nav-ham" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="#como-funciona">Como funciona</a>
-  <a href="#entregaveis">O que você recebe</a>
-  <a href="#planos">Planos</a>
-  <a href="#quem-somos">Quem Somos</a>
-  <a href="#contato">Contato</a>
-  <a href="#diagnostico" class="ncta">Quero avaliar minha empresa</a>
 </div>
 </nav>
 
@@ -1198,19 +1187,6 @@ function showR(){var r=document.getElementById('quiz-result');r.style.display='b
 function updCta(r,c){var m=encodeURIComponent('Fiz o diagnóstico e deu '+r+'. Temos '+(c||'?')+' colaboradores.');document.getElementById('qcta').href='https://wa.me/5524992992759?text='+m}
 function calcular(){var c=parseInt(document.getElementById('cc').value)||50;var s=parseInt(document.getElementById('cs').value)||3000;var m=parseFloat(document.getElementById('ct').value)||1;var a=Math.round(c*0.04*s*3*m);var p=Math.round(c*0.15*s*0.3*12*m);var t=Math.round(c*0.08*s*2*m);var j=Math.round(c*0.02*80000*m);var tot=a+p+t+j;function f(v){return'R$ '+v.toLocaleString('pt-BR')}document.getElementById('ctot').textContent=f(tot);document.getElementById('ca').textContent=f(a);document.getElementById('cp').textContent=f(p);document.getElementById('ctu').textContent=f(t);document.getElementById('cj').textContent=f(j);document.getElementById('cr').style.display='block'}
 
-// Mobile hamburger menu
-(function(){
-  var btn=document.getElementById('nav-ham');
-  var menu=document.getElementById('nav-mobile');
-  function close(){btn.classList.remove('open');menu.classList.remove('open');btn.setAttribute('aria-expanded','false')}
-  btn.addEventListener('click',function(){
-    var isOpen=menu.classList.toggle('open');
-    btn.classList.toggle('open',isOpen);
-    btn.setAttribute('aria-expanded',isOpen);
-  });
-  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close)});
-  document.addEventListener('click',function(e){if(!e.target.closest('nav'))close()});
-})();
 
 // Privacy & Terms modals
 document.addEventListener('DOMContentLoaded',function(){
