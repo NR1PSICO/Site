@@ -1247,6 +1247,42 @@ document.addEventListener('DOMContentLoaded',function(){
   tm.addEventListener('click',function(e){if(e.target===tm)tm.style.display='none'});
 });
 
+// GA4 + Cookie Consent
+var GA4_ID = 'G-6GNEGM5CPJ';
+function nr1LoadGA4() {
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA4_ID);
+}
+(function(){
+  var consent = localStorage.getItem('nr1_cookie_consent');
+  if (consent === 'accepted') { nr1LoadGA4(); return; }
+  if (consent === 'declined') { return; }
+  document.addEventListener('DOMContentLoaded', function() {
+    var banner = document.getElementById('cookie-banner');
+    banner.style.display = 'block';
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      localStorage.setItem('nr1_cookie_consent', 'accepted');
+      banner.style.display = 'none';
+      nr1LoadGA4();
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function() {
+      localStorage.setItem('nr1_cookie_consent', 'declined');
+      banner.style.display = 'none';
+    });
+    document.getElementById('cookie-open-privacy').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('privacy-modal').style.display = 'flex';
+    });
+  });
+})();
+
 // Close mobile menu on link click
 document.querySelectorAll('.nav-links a').forEach(function(a){
   a.addEventListener('click', function(){
@@ -1258,6 +1294,20 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
 });
 
 </script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#fff;border-top:2px solid #E5E7EB;box-shadow:0 -4px 24px rgba(10,59,100,.10);padding:16px 24px">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <p style="font-size:13px;color:#374151;line-height:1.6;margin:0;flex:1;min-width:200px">
+      Utilizamos cookies analíticos para melhorar sua experiência. Consulte nossa
+      <a href="javascript:void(0)" id="cookie-open-privacy" style="color:#0E968C;text-decoration:underline">Política de Privacidade</a>.
+    </p>
+    <div style="display:flex;gap:10px;align-items:center;flex-shrink:0">
+      <button id="cookie-decline" style="background:none;border:1px solid #D1D5DB;border-radius:8px;padding:8px 18px;font-size:13px;color:#6B7280;cursor:pointer;font-family:inherit">Recusar</button>
+      <button id="cookie-accept" style="background:#0E968C;border:none;border-radius:8px;padding:9px 22px;font-size:13px;font-weight:600;color:#fff;cursor:pointer;font-family:inherit">Aceitar</button>
+    </div>
+  </div>
+</div>
 
 <!-- PRIVACY POLICY MODAL -->
 <div id="privacy-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:9999;justify-content:center;align-items:center;padding:24px">
