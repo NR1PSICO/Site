@@ -1197,10 +1197,11 @@ body{font-family:var(--fb);background:var(--lt);color:var(--tb);line-height:1.6;
   </div>
   <div style="max-width:600px;margin:0 auto">
     <div class="contact-form">
-      <form id="formContato" class="contact-form"><h3>Envie uma mensagem</h3>
+      <form id="formContato" class="contact-form" novalidate><h3>Envie uma mensagem</h3>
       <div class="cf-row"><input type="text" id="nomeContato" placeholder="Seu nome"><input type="email" id="emailContato" placeholder="voce@empresa.com.br"></div>
       <div class="cf-row"><input type="text" id="empresaContato" placeholder="Nome da empresa" style="width:100%"></div>
       <div class="cf-row"><textarea id="mensagemContato" placeholder="Conte-nos como podemos ajudar..."></textarea></div>
+      <div id="formContatoFeedback" style="display:none;margin-bottom:12px;padding:12px;border-radius:8px;font-size:14px"></div>
       <button type="submit" class="cf-btn">Enviar Mensagem</button>
     </form>
     </div>
@@ -1446,27 +1447,39 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
   document.getElementById('formContato').addEventListener('submit', function(e) {
     e.preventDefault();
 
+    const feedback = document.getElementById('formContatoFeedback');
+    function showFeedback(msg, ok) {
+      feedback.style.display = 'block';
+      feedback.style.background = ok ? '#ECFDF5' : '#FEF2F2';
+      feedback.style.border = ok ? '1px solid #10B981' : '1px solid #EF4444';
+      feedback.style.color = ok ? '#065F46' : '#991B1B';
+      feedback.innerHTML = msg;
+    }
+
     const nome = document.getElementById('nomeContato').value.trim();
     const email = document.getElementById('emailContato').value.trim();
     const empresa = document.getElementById('empresaContato').value.trim();
     const mensagem = document.getElementById('mensagemContato').value.trim();
 
     if (!nome || !email || !empresa || !mensagem) {
-      alert('Por favor, preencha todos os campos antes de enviar.');
+      showFeedback('Por favor, preencha todos os campos antes de enviar.', false);
       return;
     }
-    if (!email.includes('@') || !email.includes('.')) {
-      alert('Por favor, informe um email válido.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showFeedback('Por favor, informe um email válido (ex.: voce@empresa.com.br).', false);
       return;
     }
 
     const texto =
       `Olá! Sou ${nome}, da empresa ${empresa}.\n\n` +
       `${mensagem}\n\n` +
-      `📧 ${email}\n` +
+      `Email: ${email}\n` +
       `_(Mensagem enviada pelo site nr1psico.com.br)_`;
 
     const url = `https://wa.me/5524992992759?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank');
+    showFeedback('✅ Mensagem pronta! Abrindo o WhatsApp para concluir o envio... ' +
+      '<a href="' + url + '" target="_blank" rel="noopener" style="color:#065F46;font-weight:600;text-decoration:underline">Se não abrir, clique aqui</a>.', true);
+    const win = window.open(url, '_blank');
+    if (!win) { window.location.href = url; }
   });
 </script>
